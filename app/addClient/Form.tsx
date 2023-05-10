@@ -7,6 +7,8 @@ import { DateTime } from 'luxon';
     const [name, setName] = useState('');
     const [content, setContent] = useState('');
     const [company, setCompany] = useState('');
+    const [plate, setPlate] = useState('');
+    const [vehicleType, setVihicleType] = useState('');
     const [plan, setPlan] = useState('');
     const [price, setPrice] = useState('');
     const [dueDate, setDueDate] = useState('');
@@ -14,13 +16,14 @@ import { DateTime } from 'luxon';
     async function submitClient(e: React.FormEvent) {
         e.preventDefault()
         try {
-            console.log("here")
             const data = await fetch('/api/createClient', {
                 method: 'POST',
                 body: JSON.stringify({
                     name,
                     content,
                     company,
+                    plate,
+                    vehicleType,
                     plan,
                     price,
                     dueDate: DateTime.fromISO(dueDate).toJSDate()
@@ -32,43 +35,52 @@ import { DateTime } from 'luxon';
             }
         } catch (error) {
             console.error(error)
-            console.log("here")
         }
     }
 
   return (
     <form onSubmit={submitClient}>
       <label>
-        Name:
+        Όνομα:
         <input className="text-black" type="text" value={name} onChange={e => setName(e.target.value)} />
       </label>
       <br />
       <label>
-        Content:
-        <textarea className="text-black" value={content} onChange={e => setContent(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Company:
+        Εταιρεία:
         <input className="text-black" type="text" value={company} onChange={e => setCompany(e.target.value)} />
       </label>
       <br />
       <label>
-        Plan:
+        Πινακίδα:
+        <input className="text-black" type="text" value={plate} onChange={e => setPlate(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Τύπος Οχήματος:
+        <input className="text-black" type="text" value={vehicleType} onChange={e => setVihicleType(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Πλάνο:
         <input className="text-black" type="text" value={plan} onChange={e => setPlan(e.target.value)} />
       </label>
       <br />
       <label>
-        Price:
+        Τιμή:
         <input className="text-black" type="number" value={price} onChange={e => setPrice(e.target.value)} />
       </label>
       <br />
       <label>
-        Due Date:
+        Λήξη:
         <input className="text-black" type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} />
       </label>
       <br />
-      <button type="submit">Create Client</button>
+      <label>
+        Σχόλια:
+        <textarea className="text-black" value={content} onChange={e => setContent(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Εισαγωγή Πελάτη</button>
     </form>
   );
 };

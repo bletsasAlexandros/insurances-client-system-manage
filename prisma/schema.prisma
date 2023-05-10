@@ -22,6 +22,8 @@ model Client {
   content   String?
   company   String
   plan  String
+  plate String?
+  vehicleType String?
   price Decimal? @db.Decimal(10, 2)
   dueDate DateTime
 }

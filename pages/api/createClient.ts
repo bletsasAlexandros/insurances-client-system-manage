@@ -20,12 +20,14 @@ export default async function handler(
                         company: client.company,
                         plan: client.plan,
                         price: client.price,
+                        plate: client.plate,
+                        vehicleType: client.vehicleType,
                         dueDate: client.dueDate,
                     },
                 });
                 res.status(200).json(data);
             } catch (error) {
-                return res.status(500).json({ message: error.message });
+                return res.status(500).json({ message: "An error occured" });
             }
         }
     } catch (error) {

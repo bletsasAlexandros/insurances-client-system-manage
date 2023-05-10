@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Client from "./Client"
 
 async function getClients(){
   const res = await fetch(`${process.env.BASE_URL}/api/getClients`)
@@ -13,9 +14,13 @@ export default async function Home() {
   console.log(data)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Link href="/addClient">Προσθήκη Πελάτη</Link>
+      <Link href="/addClient">Προσθήκη Πελάτη</Link>      
       {data.map(client => (
-        <h1 className="text-lg">{client.name}</h1>
+        <Client 
+          key={client.id}
+          id={client.id}
+          name={client.name}
+        />
       ))}
     </main>
   )

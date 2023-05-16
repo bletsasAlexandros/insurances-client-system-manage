@@ -2,7 +2,7 @@ import Link from "next/link"
 import Client from "./Client"
 
 async function getClients(){
-  const res = await fetch(`${process.env.BASE_URL}/api/getClients`)
+  const res = await fetch(`${process.env.BASE_URL}/api/getClients`, { cache: "no-store" })
   if(!res.ok){
     console.log(res)
   }

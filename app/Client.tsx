@@ -1,6 +1,8 @@
-"use client"
+'use client';
 
-import React, { useState } from 'react';
+import { data } from 'autoprefixer';
+import { useRouter } from 'next/navigation';
+import React, { useState, useTransition } from 'react';
 
 async function deleteClient(id: number) {
   const res = await fetch('/api/deleteClient', {
@@ -15,8 +17,24 @@ async function deleteClient(id: number) {
 }
 
 export default function Client({ name, id }: { name: string; id: number }) {
+    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
+    const [isFetching, setIsFetching] = useState(false);
+
+    const isMutating = isPending || isFetching;
+
     const handleDelete = async () => {
+        setIsFetching(true);
+
+        //Delete client
         await deleteClient(id);
+
+        setIsFetching(false);
+
+        startTransition(() => {
+            router.refresh();
+        });
+        
     };
 
     return (

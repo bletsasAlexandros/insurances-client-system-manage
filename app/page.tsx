@@ -15,13 +15,13 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Link href="/addClient">Προσθήκη Πελάτη</Link>      
+      <div className="container mx-auto">
       {data.map(client => (
         <Client 
-          key={client.id}
-          id={client.id}
-          name={client.name}
+          user = {client}
         />
       ))}
+      </div>
     </main>
   )
 }

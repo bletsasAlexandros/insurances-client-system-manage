@@ -11,6 +11,7 @@ import { DateTime } from 'luxon';
     const [plan, setPlan] = useState('');
     const [price, setPrice] = useState('');
     const [dueDate, setDueDate] = useState('');
+    const [phone, setPhone] = useState('');
 
 
     async function submitClient(e: React.FormEvent) {
@@ -27,7 +28,8 @@ import { DateTime } from 'luxon';
                     vehicleType,
                     plan,
                     price,
-                    dueDate: DateTime.fromISO(dueDate).toJSDate()
+                    dueDate: DateTime.fromISO(dueDate).toJSDate(),
+                    phone,
                 }),
             })
             const res = await data.json()
@@ -41,6 +43,7 @@ import { DateTime } from 'luxon';
                 setPlan('');
                 setPrice('');
                 setDueDate('');
+                setPhone('');
 
             }
         } catch (error) {
@@ -53,6 +56,11 @@ import { DateTime } from 'luxon';
       <label>
         Όνομα:
         <input className="text-black bg-gray-200 border-black border-2" type="text" value={name} onChange={e => setName(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        τηλέφωνο:
+        <input className="text-black bg-gray-200 border-black border-2" value={phone} onChange={e => setContent(e.target.value)} />
       </label>
       <br />
       <label>

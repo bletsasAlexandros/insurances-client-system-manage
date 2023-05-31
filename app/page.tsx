@@ -13,15 +13,28 @@ export default async function Home() {
   const data: {id: number, name:string}[] = await getClients()
   console.log(data)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Link href="/addClient">Προσθήκη Πελάτη</Link>      
-      <div className="container mx-auto">
-      {data.map(client => (
-        <Client 
-          user = {client}
-        />
-      ))}
-      </div>
+    <main className="min-h-screen items-center justify-between p-24">
+      <Link href="/addClient">Προσθήκη Πελάτη</Link>  
+      <div className="overflow-x-auto">
+        <table className="table-auto">
+          <thead>
+            <tr>
+              <th className="py-2 px-4">Όνομα</th>
+              <th className="py-2 px-4">Τηλέφωνο</th>
+              <th className="py-2 px-4">Εταιρεία</th>
+              <th className="py-2 px-4">Τιμή</th>
+              <th className="py-2 px-4">Λήξη</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map(client => (
+              <Client 
+                user = {client}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>   
     </main>
   )
 }

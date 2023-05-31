@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
+import Actions from './Actions';
 
-async function getClient(clientId: any) {
+async function getClient(clientId: number) {
+    console.log(`${process.env.BASE_URL}`)
     const client = await fetch(`${process.env.BASE_URL}/api/getClient?id=${clientId}`, {
         method: 'GET'
     });
@@ -11,9 +13,8 @@ async function getClient(clientId: any) {
     return client.json();
     }
 
-export default async function Client({params}: {params: {clientId: string}}) {
+export default async function Client({params}: {params: {clientId: number}}) {
     const client = await getClient(params.clientId);
-    console.log(client);
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -26,6 +27,7 @@ export default async function Client({params}: {params: {clientId: string}}) {
             <p>{client.plan}</p>
             <p>{client.price}</p>
             <p>{client.phone}</p>
+            <Actions id={client.id} />
         </main>
     );
 }

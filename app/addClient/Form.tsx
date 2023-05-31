@@ -7,7 +7,7 @@ import { DateTime } from 'luxon';
     const [content, setContent] = useState('');
     const [company, setCompany] = useState('');
     const [plate, setPlate] = useState('');
-    const [vehicleType, setVihicleType] = useState('');
+    const [vehicleType, setVehicleType] = useState('');
     const [plan, setPlan] = useState('');
     const [price, setPrice] = useState('');
     const [dueDate, setDueDate] = useState('');
@@ -39,7 +39,7 @@ import { DateTime } from 'luxon';
                 setContent('');
                 setCompany('');
                 setPlate('');
-                setVihicleType('');
+                setVehicleType('');
                 setPlan('');
                 setPrice('');
                 setDueDate('');
@@ -52,53 +52,53 @@ import { DateTime } from 'luxon';
     }
 
   return (
-    <form onSubmit={submitClient}>
-      <label>
+    <form onSubmit={submitClient} className='grid grid-cols-4 gap-4 w-full mt-10'>
+      <label className='mb-3 col-start-1'>
         Όνομα:
-        <input className="text-black bg-gray-200 border-black border-2" type="text" value={name} onChange={e => setName(e.target.value)} />
       </label>
+      <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={name} onChange={e => setName(e.target.value)} />
       <br />
-      <label>
-        τηλέφωνο:
-        <input className="text-black bg-gray-200 border-black border-2" value={phone} onChange={e => setContent(e.target.value)} />
+      <label className='mb-3 col-start-1'>
+        Tηλέφωνο:
       </label>
+      <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type='text' value={phone} onChange={e => setPhone(e.target.value)} />
       <br />
-      <label>
+      <label className='mb-3 col-start-1'>
         Εταιρεία:
-        <input className="text-black bg-gray-200 border-black border-2" type="text" value={company} onChange={e => setCompany(e.target.value)} />
       </label>
+      <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={company} onChange={e => setCompany(e.target.value)} />
       <br />
-      <label>
+      <label className='mb-3 col-start-1'>
         Πινακίδα:
-        <input className="text-black bg-gray-200 border-black border-2" type="text" value={plate} onChange={e => setPlate(e.target.value)} />
       </label>
+      <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={plate} onChange={e => setPlate(e.target.value)} />
       <br />
-      <label>
+      <label className='mb-3 col-start-1'>
         Τύπος Οχήματος:
-        <input className="text-black bg-gray-200 border-black border-2" type="text" value={vehicleType} onChange={e => setVihicleType(e.target.value)} />
       </label>
+        <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={vehicleType} onChange={e => setVehicleType(e.target.value)} />
       <br />
-      <label>
+      <label className='mb-3 col-start-1'>
         Πλάνο:
-        <input className="text-black bg-gray-200 border-black border-2" type="text" value={plan} onChange={e => setPlan(e.target.value)} />
       </label>
+        <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={plan} onChange={e => setPlan(e.target.value)} />
       <br />
-      <label>
+      <label className='mb-3 col-start-1'>
         Τιμή:
-        <input className="text-black bg-gray-200 border-black border-2" type="number" value={price} onChange={e => setPrice(e.target.value)} />
+        <input className="mb-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="number" value={price} onChange={e => setPrice(e.target.value)} />
       </label>
       <br />
-      <label>
+      <label className='mb-3 col-start-3'>
         Λήξη:
-        <input className="text-black bg-gray-200 border-black border-2" type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} />
+        <input className="mb-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} />
       </label>
       <br />
-      <label>
+      <label className='mb-3 col-span-4'>
         Σχόλια:
-        <textarea className="text-black bg-gray-200 border-black border-2" value={content} onChange={e => setContent(e.target.value)} />
+        <textarea className="mb-3 col-span-4 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" value={content} onChange={e => setContent(e.target.value)} />
       </label>
       <br />
-      <button type="submit" className='btn border-black'>Εισαγωγή Πελάτη</button>
+      <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded col-span-2'>Εισαγωγή Πελάτη</button>
     </form>
   );
 };

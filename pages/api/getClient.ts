@@ -6,7 +6,6 @@ export default async function handler(
     res: NextApiResponse
 ) {
     try{
-        console.log(req)
         const data = await prisma.client.findUnique({
             where: {
                 id: parseInt(req.query.id as string)

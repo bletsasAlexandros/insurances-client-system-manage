@@ -23,6 +23,7 @@ export default async function handler(
                         plate: client.plate,
                         vehicleType: client.vehicleType,
                         dueDate: client.dueDate,
+                        phone: client.phone,
                     },
                 });
                 res.status(200).json(data);

@@ -17,7 +17,7 @@ export default function Actions ({ id }: any) {
 
     return (
         <div className='flex justify-center'>
-        <Link href={`/client/${id}`}>
+        <Link href={`/client/${id}/edit`}>
             <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
             Επεξεργασία
             </button>

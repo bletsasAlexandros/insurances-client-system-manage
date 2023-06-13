@@ -1,26 +1,41 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 
-  export default function FormPost() {
-    const [name, setName] = useState('');
-    const [content, setContent] = useState('');
-    const [company, setCompany] = useState('');
-    const [plate, setPlate] = useState('');
-    const [vehicleType, setVehicleType] = useState('');
-    const [plan, setPlan] = useState('');
-    const [price, setPrice] = useState('');
-    const [dueDate, setDueDate] = useState('');
-    const [phone, setPhone] = useState('');
+interface FormPostProps {
+  clientData?: {
+    id?: number;
+    name: string;
+    content: string;
+    company: string;
+    plate: string;
+    vehicleType: string;
+    plan: string;
+    price: string;
+    dueDate: string;
+    phone: string;
+  };
+}
 
+  export default function FormPost( {clientData }: FormPostProps) {
+    const [name, setName] = useState(clientData?.name || '');
+    const [content, setContent] = useState(clientData?.content || '');
+    const [company, setCompany] = useState(clientData?.company || '');
+    const [plate, setPlate] = useState(clientData?.plate || '');
+    const [vehicleType, setVehicleType] = useState(clientData?.vehicleType || '');
+    const [plan, setPlan] = useState(clientData?.plan || '');
+    const [price, setPrice] = useState(clientData?.price || '');
+    const [dueDate, setDueDate] = useState(clientData?.dueDate || '');
+    const [phone, setPhone] = useState(clientData?.phone || '');
 
     async function submitClient(e: React.FormEvent) {
       e.preventDefault();
       
         try {
-            const data = await fetch('/api/createClient', {
+            const data = await fetch(clientData ? '/api/updateClient' : '/api/createClient', {
                 method: 'POST',
                 body: JSON.stringify({
+                    id: clientData?.id,
                     name,
                     content,
                     company,
@@ -33,7 +48,7 @@ import { DateTime } from 'luxon';
                 }),
             })
             const res = await data.json()
-            if (!res.ok) {
+            if (!res.ok && !clientData) {
                 console.log(res)
                 setName('');
                 setContent('');
@@ -98,7 +113,7 @@ import { DateTime } from 'luxon';
         <textarea className="mb-3 col-span-4 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" value={content} onChange={e => setContent(e.target.value)} />
       </label>
       <br />
-      <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded col-span-2'>Εισαγωγή Πελάτη</button>
+      <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded col-span-2'>{clientData ? 'Ενημέρωση Πελάτη' : 'Εισαγωγή Πελάτη'}</button>
     </form>
   );
 };

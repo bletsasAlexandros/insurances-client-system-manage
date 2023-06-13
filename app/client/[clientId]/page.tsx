@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 import Actions from './Actions';
+import { DateTime } from 'luxon';
 
 async function getClient(clientId: number) {
     const client = await fetch(`${process.env.BASE_URL}/api/getClient?id=${clientId}`, {
-        method: 'GET'
+        method: 'GET',
+        cache: 'no-store',
     });
     if (!client) {
         throw new Error('Client not found');
@@ -33,7 +35,7 @@ export default async function Client({params}: {params: {clientId: number}}) {
               <p>{client.vehicleType}</p>
             </div>
             <div>
-              <label className="font-semibold">Πλάνο:</label>
+              <label className="font-semibold">Πλάνο (Σε μήνες):</label>
               <p>{client.plan}</p>
             </div>
             <div>
@@ -43,6 +45,10 @@ export default async function Client({params}: {params: {clientId: number}}) {
             <div>
               <label className="font-semibold">Τηλέφωνο:</label>
               <p>{client.phone}</p>
+            </div>
+            <div>
+              <label className="font-semibold">Λήξη Συμβολαίου</label>
+              <p>{DateTime.fromISO(client.dueDate).toFormat('dd/MM/yyyy')}</p>
             </div>
             <div className='col-span-2'>
               <label className="font-semibold">Περιεχόμενο:</label>

@@ -95,9 +95,9 @@ interface FormPostProps {
         <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={vehicleType} onChange={e => setVehicleType(e.target.value)} />
       <br />
       <label className='mb-3 col-start-1'>
-        Πλάνο:
+        Πλάνο (Σε μήνες):
       </label>
-        <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="text" value={plan} onChange={e => setPlan(e.target.value)} />
+        <input className="mb-3 col-span-3 text-black peer block min-h-[auto] w-full rounded border-0 bg-gray-200 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-black-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="number" value={plan} onChange={e => setPlan(e.target.value)} />
       <br />
       <label className='mb-3 col-start-1'>
         Τιμή:

@@ -8,7 +8,7 @@ import FormPost from '../../../addClient/Form';
 
 //get the client's props
 async function getClient(clientId: number) {
-    const client = await fetch(`http://localhost:3000/api/getClient?id=${clientId}`, {
+    const client = await fetch(`/api/getClient?id=${clientId}`, {
         method: 'GET'
     });
 

@@ -18,6 +18,8 @@ interface FormPostProps {
 }
 
   export default function FormPost( {clientData }: FormPostProps) {
+    const formattedDueDate = clientData?.dueDate ? new Date(clientData.dueDate).toISOString().split('T')[0] : '';
+
     const [name, setName] = useState(clientData?.name || '');
     const [content, setContent] = useState(clientData?.content || '');
     const [company, setCompany] = useState(clientData?.company || '');
@@ -25,7 +27,7 @@ interface FormPostProps {
     const [vehicleType, setVehicleType] = useState(clientData?.vehicleType || '');
     const [plan, setPlan] = useState(clientData?.plan || '');
     const [price, setPrice] = useState(clientData?.price || '');
-    const [dueDate, setDueDate] = useState(clientData?.dueDate || '');
+    const [dueDate, setDueDate] = useState(formattedDueDate);
     const [phone, setPhone] = useState(clientData?.phone || '');
 
     async function submitClient(e: React.FormEvent) {

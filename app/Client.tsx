@@ -2,21 +2,19 @@ import React from 'react';
 import { DateTime } from 'luxon';
 import Link from 'next/link';
 
-// async function deleteClient(id: number) {
-//   const res = await fetch('/api/deleteClient', {
-//     method: 'POST',
-//     body: JSON.stringify({ id }),
-//   });
-//   if (!res.ok) {
-//     console.log(res);
-//     window.location.reload();
-//   }
-//   return res.json();
-// }
-
 export default function Client({ user }: any) {
+    const isDueDatePassed = DateTime.fromISO(user.dueDate) < DateTime.now();
+    const isDueDateWithinMonth = DateTime.fromISO(user.dueDate) <= DateTime.now().plus({ months: 1 });
+
+    let className = '';
+    if (isDueDatePassed) {
+      className = 'bg-red-100';
+    } else if (isDueDateWithinMonth) {
+      className = 'bg-yellow-100';
+    }
+
     return (
-        <tr key={user.id}>
+        <tr key={user.id} className={`${className}`}>
         <td className='py-2 px-4'>
           <Link href={`/client/${user.id}`}>
             <p className="text-blue-500 hover:underline">{user.name}</p>

@@ -10,7 +10,7 @@ async function getClients(){
 }
 
 export default async function Home() {
-  const data: {id: number, name:string}[] = await getClients()
+  const data: {id: number, name:string, dueDate:string}[] = await getClients()
   console.log(data)
   return (
     <main className="min-h-screen items-center justify-between p-24">
@@ -27,11 +27,14 @@ export default async function Home() {
             </tr>
           </thead>
           <tbody>
-            {data.map(client => (
+            {data.map(client => {
+              return (
+              
               <Client 
                 user = {client}
+                key = {client.id}
               />
-            ))}
+            )})}
           </tbody>
         </table>
       </div>   

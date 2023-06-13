@@ -8,7 +8,7 @@ export default async function handler(
     try{
         const data = await prisma.client.findMany({
             orderBy: {
-                id: 'asc'
+                dueDate: 'asc'
             }
         })
         return res.status(200).json(data)

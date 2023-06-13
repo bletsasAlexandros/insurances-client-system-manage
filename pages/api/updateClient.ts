@@ -13,7 +13,7 @@ export default async function handler(
                 return res.status(500).json({ message: "Empty Name" });
             }
             try {
-                console.log(client);
+                
                 const data = await prisma.client.update({
                     where: {
                         id: client.id
@@ -39,5 +39,3 @@ export default async function handler(
         return res.status(500).json({ message: "Invalid Request Body" });
     }
 }
-//now we can test it in the browser
-// http://localhost:3000/api/updateClient

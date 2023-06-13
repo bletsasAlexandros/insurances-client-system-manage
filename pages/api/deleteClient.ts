@@ -6,9 +6,6 @@ export default async function handler(
     res: NextApiResponse
 ) {
     try{
-
-        console.log("debug")
-        console.log(req.body)
         const client = JSON.parse(req.body)
         if(req.method === 'POST'){
             const data = await prisma.client.delete({

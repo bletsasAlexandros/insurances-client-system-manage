@@ -3,7 +3,6 @@ import React from 'react';
 import Actions from './Actions';
 
 async function getClient(clientId: number) {
-    console.log(`${process.env.BASE_URL}`)
     const client = await fetch(`${process.env.BASE_URL}/api/getClient?id=${clientId}`, {
         method: 'GET'
     });

@@ -51,7 +51,6 @@ interface FormPostProps {
             })
             const res = await data.json()
             if (!res.ok && !clientData) {
-                console.log(res)
                 setName('');
                 setContent('');
                 setCompany('');
